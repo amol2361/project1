@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="alignnavbar">
+                <input type="text" placeholder="Enter the place" id="type">
+                <button class="cir">
+                    <img src="search.svg" alt="search" id="search">
+                </button>
+                <!-- <div class="error"></div> -->
+            </div>
+        </div>
+        <div class="body">
+            <div class="image">
+                <img src="weather.jpeg" alt="weather image" id="sun">
+                <h1 class="Temp">22</h1>
+                <h2 class="name">NEW YORK</h2>
+            </div>
+            <div class="details">
+                <div class="humidity">
+                    <img src="humidity.webp" class="humid">
+                    <div class="col">
+                        <p class="humiad"></p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="wind">
+                    <img src="wind.jpeg" class="wond">
+                    <div class="col">
+                        <p class="air">50%</p>
+                        <p>Wind</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const apikey = "f91a88547cc4532ca26cc8ad0d79d4e3";
+        const apiurl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
+
+        const searchengine = document.querySelector("#type");
+        const searchbtn = document.querySelector(".cir");
+        const weather_icon = document.querySelector("#sun")
+        async function checkweather(name) {
+            const result = await fetch(apiurl + name + `&appid=${apikey}`);
+            const data = await result.json();
+            if (result.status == 404) {
+                alert("No city found ")
+            }
+            console.log(data)
+            document.querySelector(".name").innerHTML = data.name;
+            document.querySelector(".Temp").innerHTML = Math.round(data.main.temp) + "°C";
+            document.querySelector(".humiad").innerHTML = data.main.humidity + "%";
+            document.querySelector(".air").innerHTML = data.wind.speed + "Km/h";
+            if (data.weather[0].main.toLowerCase() === "clouds") {
+                weather_icon.src = "images/cloudy.png"
+            }
+            else if (data.weather[0].main.toLowerCase() === "clear") {
+                weather_icon.src = "images/drizzle.webp"
+            }
+            else if (data.weather[0].main.toLowerCase() === "wind") {
+                weather_icon.src = "images/cold.jpg"
+            }
+            else if (data.weather[0].main.toLowerCase() === "rain") {
+                weather_icon.src = "images/rain.webp"
+            }
+            else if (data.weather[0].main.toLowerCase() === "sunny") {
+                weather_icon.src = "images/hot.jpeg"
+            }
+            document.querySelector(".body").style.display="block";
+        }
+        searchbtn.addEventListener("click", () => {
+            checkweather(searchengine.value)
+        })
+    </script>
+</body>
+
+</html>
