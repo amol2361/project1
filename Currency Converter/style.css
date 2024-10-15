@@ -1,0 +1,100 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+    border:none;
+    outline: none;
+}
+body{
+    background-color: blueviolet;
+}
+.container{
+    width: 90%;
+    max-width: 25em;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    border-radius: 2%;
+    padding: 2em
+}
+.app-details{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+}
+.img-icon img{
+    width: 40%;
+}
+.img-icon{
+    display:flex;
+    justify-content: center;
+}
+.name{
+    padding-top: .34em;
+    font: bold;
+    font-size: x-large;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 1em;
+}
+label{
+    margin-bottom: 1em;
+    font: bold;
+    font-weight: 600;
+}
+#input{
+    width:100%;
+    display: block;
+    background-color: azure;
+    margin-bottom: 2em;
+    border-bottom: 1px solid black;
+}
+.dropdown{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dropdown #from-currency-select,#to-currency-select{
+    width:40%;
+}
+select{
+    font:bolder;
+    width: 100%;
+    font-size: 1em;
+    margin-bottom: 2em;
+    border-radius: 0.2em;
+    /* appearance: none; */
+    background-image: url(arrow-down-3101.svg);
+    background-color: rgb(83, 43, 226);
+    color:white;
+    padding: .4em;
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    background-repeat: no-repeat;
+    background-position: right 15px top 50px ,center;
+    background-size: 20px 20px;
+}
+.vcon{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.convert-button{
+    padding: 1em ;
+    background-color: rgba(0, 255, 255, 0.295);
+    border-radius: 10px;
+}
+#result{
+    font-size: x-large;
+    padding: 0.1em;
+    margin-top: .3em;
+    font-weight: 200;
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    height: 2em;
+}
